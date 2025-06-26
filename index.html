@@ -54,6 +54,11 @@
       flex-direction: column;
       align-items: center;
       transition: background 0.3s, color 0.3s;
+      overflow-x: hidden;
+    }
+    html {
+      overflow-x: hidden;
+      scroll-behavior: smooth;
     }
     header {
       width: 100%;
@@ -172,7 +177,10 @@
       background: var(--bg-card);
       border-radius: 4px;
       box-shadow: 0 8px 0 var(--shadow);
-      margin: 2rem auto;
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 2rem;
+      margin-bottom: 2rem;
       padding: 2rem 1.5rem;
       display: flex;
       flex-direction: column;
@@ -288,6 +296,7 @@
     @media (max-width: 600px) {
       main {
         padding: 1rem 0.3rem;
+        min-width: 90vw;
       }
       .tokenomics {
         flex-direction: column;
@@ -304,6 +313,10 @@
       line-height: 1.7;
     }
     @media (max-width: 700px) {
+
+    main {
+            min-width: 90vw;
+            }
       header {
         min-height: 220px;
         background-size: auto 100%;
@@ -322,6 +335,9 @@
       -webkit-user-select: none;
       -moz-user-select: none;
       -ms-user-select: none;
+    }
+    body.dark .about svg path {
+      fill: #fff !important;
     }
   </style>
   <script>
@@ -431,6 +447,21 @@
           setTimeout(() => ticker.classList.remove('copied'), 1200);
         });
       }
+      // Smooth scroll with offset for nav links
+      document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', function(e) {
+          const href = link.getAttribute('href');
+          if (href && href.startsWith('#')) {
+            const target = document.querySelector(href);
+            if (target) {
+              e.preventDefault();
+              const yOffset = -24; // Offset for header
+              const y = target.getBoundingClientRect().top + window.pageYOffset + yOffset;
+              window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+          }
+        });
+      });
     });
   </script>
 </head>
@@ -472,7 +503,7 @@
           <b>Stability Index:</b><br> 100% (no decay observed)
         </div>
         <div>
-          <b>Potential Applications:</b><br> Decentralized energy, Potential bull catalyst, experimental memeonomics, Puppet Fuel, ???
+          <b>Potential Applications:</b><br> Decentralized energy, potential bull catalyst, experimental memeonomics, puppet fuel, ???
         </div>
       </div>
     </section>
@@ -500,9 +531,9 @@
         <b>Community Outreach:</b> Wojak<br>
         <b>Funding:</b> Sourced from flooring puppet derivs last cycle.<br>
         <br>
-        <i>Want to join the research? Submit your findings on X, Telegram, or Discord.</i>
+        <i>Want to join the research? Submit your findings on X.</i>
         <div style="margin-top:1.5em; text-align:center;">
-          <a href="https://x.com/ketanefuel" target="_blank" style="display:inline-block; text-decoration:none;">
+          <a href="https://x.com/ketanealkanes" target="_blank" style="display:inline-block; text-decoration:none;">
             <span style="vertical-align:middle; display:inline-block; width:36px; height:36px;">
               <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated;">
                 <path fill-rule="evenodd" clip-rule="evenodd" d="M18 2H12V3.99995H10.0002V9.99995H12.0002V4H18V2ZM18 10H12V12H18V10ZM18.0002 3.99995H20.0002V9.99995H18.0002V3.99995ZM7 15.9999H9V14H21V16H9V20H21.0002V15.9999H23.0002V21.9999H23V22H7V21.9999V20V15.9999ZM3 8H5V10H7V12H5V14H3V12H1V10H3V8Z" fill="black"/>
