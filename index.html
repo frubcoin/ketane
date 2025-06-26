@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ketane ($KETANE) - Ketamine-Based Fuel</title>
+  <link rel="icon" type="image/png" href="ketane.png">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #e0e7ff;
+      --bg-card: #fff;
+      --bg-tokenomics: #eaffd0;
+      --bg-howtobuy: #fef9c3;
+      --bg-about: #f1f5f9;
+      --text: #222;
+      --text-accent: #3aff00;
+      --border: #3aff00;
+      --shadow: #2ab400;
+      --nav-bg: #fff;
+      --nav-text: #222;
+      --nav-hover-bg: #abff96;
+      --nav-hover-text: #fff;
+      --social-bg: #3aff00;
+      --social-hover-bg: #3aff00;
+      --meme-border: #3cff00;
+    }
+    body.dark {
+      --bg: #181c1b;
+      --bg-card: #232826;
+      --bg-tokenomics: #1e2422;
+      --bg-howtobuy: #fef9c321;
+      --bg-about: #232826;
+      --text: #eaffd0;
+      --text-accent: #3aff00;
+      --border: #3aff00;
+      --shadow: #2ab400;
+      --nav-bg: #232826;
+      --nav-text: #eaffd0;
+      --nav-hover-bg: #4d5551;
+      --nav-hover-text: #181c1b;
+      --social-bg: #3aff00;
+      --social-hover-bg: #3aff00;
+      --meme-border: #3cff00;
+    }
+    body {
+      margin: 0;
+      background: var(--bg);
+      font-family: 'Press Start 2P', cursive;
+      color: var(--text);
+      image-rendering: pixelated;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: background 0.3s, color 0.3s;
+    }
+    header {
+      width: 100%;
+      background: var(--text-accent);
+      box-shadow: 0 4px 0 var(--shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 1rem 1rem;
+      position: relative;
+      background-image: url('headersite.png');
+      background-repeat: no-repeat;
+      background-position: bottom right;
+      background-size: auto 100%;
+      min-height: 320px;
+    }
+    .dark-toggle {
+      position: absolute;
+      top: 1.2rem;
+      left: 1.5rem;
+      right: auto;
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      border: 2px solid var(--border);
+      border-radius: 2px;
+      font-family: inherit;
+      font-size: 1rem;
+      padding: 0.3em 1em;
+      cursor: pointer;
+      box-shadow: 2px 2px 0 var(--shadow);
+      transition: background 0.2s, color 0.2s;
+      z-index: 10;
+    }
+    .dark-toggle:hover {
+      background: var(--nav-hover-bg);
+      color: var(--nav-hover-text);
+    }
+    .logo {
+      width: auto;
+      height: 200px;
+      image-rendering: pixelated;
+      border: none;
+      background: none;
+      border-radius: 0;
+      margin-bottom: 1rem;
+    }
+    h1 {
+      font-size: 2.2rem;
+      margin: 0.5rem 0 0.2rem 0;
+      color: var(--text-accent);
+      text-shadow: 2px 2px 0 #fff, 4px 4px 0 var(--shadow);
+    }
+    .ticker {
+      font-size: 1.1rem;
+      color: #fff;
+      background: var(--text-accent);
+      padding: 0.2em 0.7em;
+      border-radius: 2px;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+      box-shadow: 2px 2px 2px 2px var(--shadow);
+      cursor: pointer;
+      position: relative;
+      transition: filter 0.15s;
+    }
+    .ticker:hover {
+      filter: brightness(1.2) drop-shadow(0 0 4px #fff7);
+    }
+    .ticker .copy-confirm {
+      position: absolute;
+      left: 50%;
+      top: 110%;
+      transform: translateX(-50%);
+      background: #222;
+      color: #3aff00;
+      font-size: 0.9em;
+      padding: 0.2em 0.7em;
+      border-radius: 2px;
+      white-space: nowrap;
+      z-index: 20;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+    }
+    .ticker.copied .copy-confirm {
+      opacity: 1;
+    }
+    nav {
+      margin-top: 1rem;
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+    }
+    nav a {
+      color: var(--nav-text);
+      text-decoration: none;
+      font-size: 1rem;
+      background: var(--nav-bg);
+      border: 2px solid var(--border);
+      border-radius: 2px;
+      padding: 0.3em 1em;
+      box-shadow: 2px 2px 0 var(--shadow);
+      transition: background 0.2s, color 0.2s;
+    }
+    nav a:hover {
+      background: var(--nav-hover-bg);
+      color: var(--nav-hover-text);
+    }
+
+    main {
+      width: 100%;
+      max-width: 75vw;
+      background: var(--bg-card);
+      border-radius: 4px;
+      box-shadow: 0 8px 0 var(--shadow);
+      margin: 2rem auto;
+      padding: 2rem 1.5rem;
+      display: flex;
+      flex-direction: column;
+      gap: 2.5rem;
+      align-items: center;
+    }
+    section {
+      margin-bottom: 0.5rem;
+    }
+    h2 {
+      color: var(--text-accent);
+      font-size: 1.3rem;
+      margin-bottom: 0.7rem;
+      text-shadow: 1px 1px 0 var(--shadow);
+      text-align: center;
+      width: 100%;
+    }
+    .about {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      background: var(--bg-about);
+      border-left: 6px solid var(--border);
+      padding: 1rem;
+      border-radius: 2px;
+      margin-bottom: 1rem;
+      transition: border-color 0.3s;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+      text-align: left;
+    }
+    .about.active-section {
+      border-left: 6px solid var(--text-accent);
+    }
+    .tokenomics {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      font-size: 1.1rem;
+      justify-content: center;
+      width: 100%;
+    }
+    .tokenomics div {
+      background: var(--bg-tokenomics);
+      border: 2px dashed var(--border);
+      border-radius: 2px;
+      padding: 1rem 1.5rem;
+      flex: 1 1 180px;
+      min-width: 160px;
+      max-width: 250px;
+      margin-bottom: 0.5rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+    }
+    .how-to-buy {
+      background: var(--bg-howtobuy);
+      border-left: 6px solid #fde047;
+      padding: 1rem;
+      border-radius: 2px;
+      font-size: 1.1rem;
+      margin-bottom: 1rem;
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+    }
+    .socials {
+      display: flex;
+      gap: 1.5rem;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+    .socials a {
+      color: #fff;
+      background: var(--social-bg);
+      border-radius: 4px;
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      box-shadow: 2px 2px 0 var(--shadow);
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+.how-to-buy a {
+ text-decoration: none;
+ color: var(--border);
+}
+
+
+
+    .socials a:hover {
+      background: var(--social-hover-bg );
+    }
+    .meme {
+      margin-top: 2rem;
+      text-align: center;
+      font-size: 1.2rem;
+      color: var(--text-accent);
+      background: var(--bg-card);
+      border: 2px dotted var(--meme-border);
+      border-radius: 2px;
+      padding: 1rem;
+      box-shadow: 2px 2px 0 var(--shadow);
+      margin-left: auto;
+      margin-right: auto;
+      max-width: 900px;
+    }
+    @media (max-width: 600px) {
+      main {
+        padding: 1rem 0.3rem;
+      }
+      .tokenomics {
+        flex-direction: column;
+        gap: 0.7rem;
+      }
+    }
+    /* More spacing for synthesis steps */
+    #howtomint ol {
+      margin-left: 2.6em;
+      padding-left: 0;
+    }
+    #howtomint ol li {
+      margin-bottom: 1.1em;
+      line-height: 1.7;
+    }
+    @media (max-width: 700px) {
+      header {
+        min-height: 220px;
+        background-size: auto 100%;
+      }
+    }
+    ::selection {
+      background: rgb(58, 255, 0);
+      color: #111;
+    }
+    ::-moz-selection {
+      background: #3aff00;
+      color: #111;
+    }
+    nav a, button, img, .logo, .dark-toggle {
+      user-select: none;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      -ms-user-select: none;
+    }
+  </style>
+  <script>
+    // Colors to use for rainbow effect
+    const ketaneColors = [
+      '#503a2a', '#fcbc05', '#f8b19d', '#2b5b89', '#20a48f', '#d1242a'
+    ];
+    // Function to wrap each letter in a span with a random color
+    function rainbowifyText(element) {
+      const text = element.textContent;
+      let html = '';
+      for (let char of text) {
+        if (char === ' ') {
+          html += ' ';
+        } else {
+          const color = ketaneColors[Math.floor(Math.random() * ketaneColors.length)];
+          html += `<span style="color:${color}">${char}</span>`;
+        }
+      }
+      element.innerHTML = html;
+    }
+    // Dark mode toggle logic
+    function setDarkMode(enabled) {
+      if (enabled) {
+        document.body.classList.add('dark');
+        localStorage.setItem('ketane-dark', '1');
+      } else {
+        document.body.classList.remove('dark');
+        localStorage.setItem('ketane-dark', '0');
+      }
+    }
+    document.addEventListener('DOMContentLoaded', function() {
+      document.querySelectorAll('.ketane-rainbow').forEach(rainbowifyText);
+      // Add dark mode toggle button
+      const btn = document.createElement('button');
+      btn.className = 'dark-toggle';
+      btn.innerHTML = '🌙';
+      btn.title = 'Toggle dark mode';
+      btn.onclick = function() {
+        setDarkMode(!document.body.classList.contains('dark'));
+        btn.innerHTML = document.body.classList.contains('dark') ? '☀️' : '🌙';
+      };
+      document.querySelector('header').appendChild(btn);
+      // Set initial mode
+      const darkPref = localStorage.getItem('ketane-dark');
+      if (darkPref === '1') {
+        setDarkMode(true);
+        btn.innerHTML = '☀️';
+      }
+      // Socials rainbow hover
+      document.querySelectorAll('.socials a').forEach(function(link) {
+        const span = link.querySelector('span');
+        if (!span) return;
+        link.addEventListener('mouseenter', function() {
+          span.classList.add('ketane-rainbow');
+          rainbowifyText(span);
+        });
+        link.addEventListener('mouseleave', function() {
+          span.classList.remove('ketane-rainbow');
+          // Remove rainbow, restore original text
+          span.innerHTML = span.textContent;
+        });
+      });
+      // Nav rainbow hover
+      document.querySelectorAll('nav a').forEach(function(link) {
+        link.addEventListener('mouseenter', function() {
+          link.classList.add('ketane-rainbow');
+          rainbowifyText(link);
+        });
+        link.addEventListener('mouseleave', function() {
+          link.classList.remove('ketane-rainbow');
+          // Remove rainbow, restore original text
+          link.innerHTML = link.textContent;
+        });
+      });
+      // Scrollspy for nav highlighting
+      const navLinks = Array.from(document.querySelectorAll('nav a'));
+      const sectionIds = navLinks.map(link => link.getAttribute('href').replace('#', ''));
+      const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+      function onScroll() {
+        let current = sections[0];
+        for (const section of sections) {
+          const rect = section.getBoundingClientRect();
+          if (rect.top <= 80) current = section;
+        }
+        navLinks.forEach(link => {
+          link.classList.toggle('active', link.getAttribute('href') === '#' + current.id);
+        });
+        // Highlight the .about in the current section
+        document.querySelectorAll('.about').forEach(div => div.classList.remove('active-section'));
+        const about = current.querySelector('.about');
+        if (about) about.classList.add('active-section');
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+      // Ticker click-to-copy
+      const ticker = document.querySelector('.ticker');
+      if (ticker) {
+        const confirm = document.createElement('span');
+        confirm.className = 'copy-confirm';
+        confirm.textContent = 'Copied!';
+        ticker.appendChild(confirm);
+        ticker.addEventListener('click', function() {
+          const text = ticker.textContent.replace(/Copied!$/, '').trim();
+          navigator.clipboard.writeText(text);
+          ticker.classList.add('copied');
+          setTimeout(() => ticker.classList.remove('copied'), 1200);
+        });
+      }
+    });
+  </script>
+</head>
+<body>
+  <header>
+    <img src="ketane.png" alt="Ketane Logo" class="logo">
+    <div class="ticker ketane-rainbow">$KETANE</div>
+    <nav>
+      <a href="#abstract">Abstract</a>
+      <a href="#about">Background</a>
+      <a href="#tokenomics">Experimental Data</a>
+      <a href="#howtomint">How to Synthesize</a>
+      <a href="#team">Research Team</a>
+    </nav>
+  </header>
+  <main>
+    <section id="abstract">
+      <h2>Research Abstract</h2>
+      <div class="about">
+        <b>Ketane</b> ($KETANE) is a novel, experimental fuel synthesized from the intersection of blockchain technology and advanced chemical meme-istry. This project explores the potential of ketamine-based compounds as a next-generation energy source for decentralized systems. Early results indicate high volatility, rapid adoption, and significant community-driven innovation. <br> <br>Further research is ongoing....
+      </div>
+    </section>
+    <section id="about">
+      <h2>Background</h2>
+      <div class="about">
+        The <b>Ketane Research Initiative</b> was founded to investigate the properties and applications of ketamine-based fuels in digital economies. Drawing inspiration from Bitcoin puppet lore and the bitcoin blockchain, our team hypothesizes that $KETANE may serve as a high-octane catalyst for both technological and cultural transformation. This could lead to unprecendented and extremely lucritive growth in the Ordinals ecosystem. Our team has long hypothesized that this growth could in turn spark the start of an <i>ordinals bull market</i>. This site documents our findings and invites peer review from the broader scientific and crypto communities.
+      </div>
+    </section>
+    <section id="tokenomics">
+      <h2>Experimental Data</h2>
+      <div class="tokenomics">
+        <div>
+          <b>Molecular Supply:</b><br> Unknown
+        </div>
+        <div>
+          <b>Substrate:</b><br> Alkanes Chain
+        </div>
+        <div>
+          <b>Stability Index:</b><br> 100% (no decay observed)
+        </div>
+        <div>
+          <b>Potential Applications:</b><br> Decentralized energy, Potential bull catalyst, experimental memeonomics, Puppet Fuel, ???
+        </div>
+      </div>
+    </section>
+    <section id="howtomint">
+      <h2>How to Synthesize $KETANE</h2>
+      <div class="how-to-buy">
+        <ol>
+          <li><b>Select a synthesis platform:</b> <a href="https://www.idclub.io/">IDClub</a> (user-friendly) or <a href="https://runeblaster.io/">RuneBlaster</a> (cost-effective).</li>
+          <li><b>Prepare your digital wallet:</b> Compatible with Alkanes (e.g., <a href="https://www.oyl.io/">Oyl</a>,<a href="https://unisat.io/">Unisat</a>).</li>
+          <li><b>Input synthesis parameters:</b> Ticker, address, amount, and fees.</li>
+          <li><b>Initiate synthesis:</b> Confirm and pay the required fee.</li>
+          <li><b>Verify results:</b> Confirm successful synthesis in your wallet or via <a href="https://www.idclub.io/">IDclub</a>.</li>
+        </ol>
+        <div style="font-size:0.95em; color:var(--text); margin-top:0.7em;">
+          <b>Note:</b> All experiments are conducted at your own risk. The $KETANE protocol is highly experimental and subject to rapid change.
+        </div>
+      </div>
+    </section>
+    <section id="team">
+      <h2>Research Team</h2>
+      <div class="about">
+        <b>Lead Scientist:</b> Dr. Satoshi Nakamoto, PhD<br>
+        <b>Blockchain Engineer:</b> @frubcoin<br>
+        <b>Lab Technician:</b> Pepe the Frog<br>
+        <b>Community Outreach:</b> Wojak<br>
+        <b>Funding:</b> Sourced from flooring puppet derivs last cycle.<br>
+        <br>
+        <i>Want to join the research? Submit your findings on X, Telegram, or Discord.</i>
+        <div style="margin-top:1.5em; text-align:center;">
+          <a href="https://x.com/ketanefuel" target="_blank" style="display:inline-block; text-decoration:none;">
+            <span style="vertical-align:middle; display:inline-block; width:36px; height:36px;">
+              <svg width="36" height="36" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" style="image-rendering:pixelated;">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M18 2H12V3.99995H10.0002V9.99995H12.0002V4H18V2ZM18 10H12V12H18V10ZM18.0002 3.99995H20.0002V9.99995H18.0002V3.99995ZM7 15.9999H9V14H21V16H9V20H21.0002V15.9999H23.0002V21.9999H23V22H7V21.9999V20V15.9999ZM3 8H5V10H7V12H5V14H3V12H1V10H3V8Z" fill="black"/>
+              </svg>
+            </span>
+            <span style="font-size:1.1em; color:var(--text-accent); font-family:'Press Start 2P',cursive; margin-left:0.5em; vertical-align:middle;">Follow us on X</span>
+          </a>
+        </div>
+      </div>
+    </section>
+    <div class="meme">
+      <b>⚗️ This research is ongoing. All results are preliminary. For peer review, contact the Ketane Research Initiative.</b><br>
+      <span style="font-size:0.9em;">(Not investment advice. For experimental use only.)</span>
+    </div>
+  </main>
+  <footer style="margin:2rem 0 1rem 0; color:var(--text-accent); font-size:0.9rem; text-align:center;">
+&copy; 2024 Ketane ($KETANE)
+  </footer>
+</body>
+</html>
