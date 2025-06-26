@@ -170,7 +170,12 @@
       background: var(--nav-hover-bg);
       color: var(--nav-hover-text);
     }
-
+    nav a span {
+      transition: color 0.3s;
+    }
+    nav a.rainbow-fade span {
+      color: var(--nav-text) !important;
+    }
     main {
       width: 100%;
       max-width: 75vw;
@@ -408,9 +413,13 @@
           rainbowifyText(link);
         });
         link.addEventListener('mouseleave', function() {
-          link.classList.remove('ketane-rainbow');
-          // Remove rainbow, restore original text
-          link.innerHTML = link.textContent;
+          // Add fade class to all child spans
+          link.classList.add('rainbow-fade');
+          setTimeout(function() {
+            link.classList.remove('ketane-rainbow');
+            link.classList.remove('rainbow-fade');
+            link.innerHTML = link.textContent;
+          }, 300);
         });
       });
       // Scrollspy for nav highlighting
@@ -479,22 +488,22 @@
   </header>
   <main>
     <section id="abstract">
-      <h2>Research Abstract</h2>
+      <h2 class="">Research Abstract</h2>
       <div class="about">
-        <b>Ketane</b> ($KETANE) is a novel, experimental fuel synthesized from the intersection of blockchain technology and advanced chemical meme-istry. This project explores the potential of ketamine-based compounds as a next-generation energy source for decentralized systems. Early results indicate high volatility, rapid adoption, and significant community-driven innovation. <br> <br>Further research is ongoing....
+        <b>Ketane</b> (<span class="ketane-rainbow">$KETANE</span>) is a novel, experimental fuel synthesized from the intersection of blockchain technology and advanced chemical meme-istry. This project explores the potential of ketamine-based compounds as a next-generation energy source for decentralized systems. Early results indicate high volatility, rapid adoption, and significant community-driven innovation. <br> <br>Further research is ongoing....
       </div>
     </section>
     <section id="about">
       <h2>Background</h2>
       <div class="about">
-        The <b>Ketane Research Initiative</b> was founded to investigate the properties and applications of ketamine-based fuels in digital economies. Drawing inspiration from Bitcoin puppet lore and the bitcoin blockchain, our team hypothesizes that $KETANE may serve as a high-octane catalyst for both technological and cultural transformation. This could lead to unprecendented and extremely lucritive growth in the Ordinals ecosystem. Our team has long hypothesized that this growth could in turn spark the start of an <i>ordinals bull market</i>. This site documents our findings and invites peer review from the broader scientific and crypto communities.
+        The <b>Ketane Research Initiative</b> was founded to investigate the properties and applications of ketamine-based fuels in digital economies. Drawing inspiration from Bitcoin puppet lore and the bitcoin blockchain, our team hypothesizes that <span class="ketane-rainbow">$KETANE</span> may serve as a high-octane catalyst for both technological and cultural transformation. This could lead to unprecendented and extremely lucritive growth in the Ordinals ecosystem. Our team has long hypothesized that this growth could in turn spark the start of an <i>ordinals bull market</i>. This site documents our findings and invites peer review from the broader scientific and crypto communities.
       </div>
     </section>
     <section id="tokenomics">
       <h2>Experimental Data</h2>
       <div class="tokenomics">
         <div>
-          <b>Molecular Supply:</b><br> Unknown
+          <b>Molecular Supply:</b><br> Unknown <span class="ketane-rainbow">$KETANE</span>
         </div>
         <div>
           <b>Substrate:</b><br> Alkanes Chain
@@ -508,14 +517,14 @@
       </div>
     </section>
     <section id="howtomint">
-      <h2>How to Synthesize $KETANE</h2>
+      <h2>How to Synthesize <span class="ketane-rainbow">$KETANE</span></h2>
       <div class="how-to-buy">
         <ol>
           <li><b>Select a synthesis platform:</b> <a href="https://www.idclub.io/">IDClub</a> (user-friendly) or <a href="https://runeblaster.io/">RuneBlaster</a> (cost-effective).</li>
           <li><b>Prepare your digital wallet:</b> Compatible with Alkanes (e.g., <a href="https://www.oyl.io/">Oyl</a>,<a href="https://unisat.io/">Unisat</a>).</li>
           <li><b>Input synthesis parameters:</b> Ticker, address, amount, and fees.</li>
           <li><b>Initiate synthesis:</b> Confirm and pay the required fee.</li>
-          <li><b>Verify results:</b> Confirm successful synthesis in your wallet or via <a href="https://www.idclub.io/">IDclub</a>.</li>
+          <li><b>Verify results:</b> Confirm successful synthesis of <span class="ketane-rainbow">$KETANE</span> in your wallet or via <a href="https://www.idclub.io/">IDclub</a>.</li>
         </ol>
         <div style="font-size:0.95em; color:var(--text); margin-top:0.7em;">
           <b>Note:</b> All experiments are conducted at your own risk. The $KETANE protocol is highly experimental and subject to rapid change.
@@ -545,12 +554,12 @@
       </div>
     </section>
     <div class="meme">
-      <b>⚗️ This research is ongoing. All results are preliminary. For peer review, contact the Ketane Research Initiative.</b><br>
-      <span style="font-size:0.9em;">(Not investment advice. For experimental use only.)</span>
+      <b>⚗️ This research is ongoing. All results are preliminary. For peer review, contact the <b>KETANE Research Initiative.</b><br>
+      <span style="font-size:0.9em;">(Not investment advice. For experimental use only. $KETANE)</span>
     </div>
   </main>
   <footer style="margin:2rem 0 1rem 0; color:var(--text-accent); font-size:0.9rem; text-align:center;">
-&copy; 2024 Ketane ($KETANE)
+&copy; 2024 Ketane (<span class="ketane-rainbow">$KETANE</span>)
   </footer>
 </body>
 </html>
