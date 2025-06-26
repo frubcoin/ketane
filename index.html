@@ -16,13 +16,13 @@
       --bg-tokenomics: #eaffd0;
       --bg-howtobuy: #fef9c3;
       --bg-about: #f1f5f9;
-      --text: #222;
+      --text: #000000;
       --text-accent: #3aff00;
       --border: #3aff00;
       --shadow: #2ab400;
-      --nav-bg: #fff;
+      --nav-bg: #ffffff81;
       --nav-text: #222;
-      --nav-hover-bg: #abff96;
+      --nav-hover-bg: #abff9685;
       --nav-hover-text: #fff;
       --social-bg: #3aff00;
       --social-hover-bg: #3aff00;
@@ -38,9 +38,9 @@
       --text-accent: #3aff00;
       --border: #3aff00;
       --shadow: #2ab400;
-      --nav-bg: #232826;
+      --nav-bg: #23282675;
       --nav-text: #eaffd0;
-      --nav-hover-bg: #4d5551;
+      --nav-hover-bg: #4d555175;
       --nav-hover-text: #181c1b;
       --social-bg: #3aff00;
       --social-hover-bg: #3aff00;
@@ -235,15 +235,17 @@
       background: var(--bg-tokenomics);
       border: 2px dashed var(--border);
       border-radius: 2px;
-      padding: 1rem 1.5rem;
-      flex: 1 1 180px;
+      padding: 1.4rem 1.7rem;
+      flex: 1 1 220px;
       min-width: 160px;
-      max-width: 250px;
+      max-width: 360px;
       margin-bottom: 0.5rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
       text-align: left;
+      word-break: break-word;
+      hyphens: auto;
     }
     .how-to-buy {
       background: var(--bg-howtobuy);
@@ -301,33 +303,41 @@
       margin-right: auto;
       max-width: 900px;
     }
-    @media (max-width: 600px) {
-      main {
-        padding: 1rem 0.3rem;
-        min-width: 90vw;
-      }
-      .tokenomics {
-        flex-direction: column;
-        gap: 0.7rem;
-      }
-    }
-    /* More spacing for synthesis steps */
-    #howtomint ol {
-      margin-left: 2.6em;
-      padding-left: 0;
-    }
-    #howtomint ol li {
-      margin-bottom: 1.1em;
-      line-height: 1.7;
-    }
+ 
     @media (max-width: 700px) {
-
-    main {
-            min-width: 90vw;
-            }
-      header {
-        min-height: 220px;
-        background-size: auto 100%;
+        main {
+          padding: 1rem 0.3rem;
+          min-width: 90vw;
+          min-width: 90vw;
+        }
+        header {
+          min-height: 220px;
+          background-size: cover;
+        }
+        .logo {
+          max-width: 50vw;
+          height: auto;
+        }
+        .tokenomics {
+          flex-direction: column;
+          align-items: center;
+          width: 100%;
+          gap: 0.7rem;
+        }
+        .tokenomics div {
+          margin-left: auto;
+          margin-right: auto;
+        }
+    }
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.8em;
+      }
+      h2 {
+        font-size: 1.04rem;
+      }
+      .about, .how-to-buy, .tokenomics, .tokenomics div, .meme, nav a {
+        font-size: 0.88em;
       }
     }
     ::selection {
@@ -346,6 +356,11 @@
     }
     body.dark .about svg path {
       fill: #fff !important;
+    }
+    img, .logo {
+        max-width: 45vw;
+      height: auto;
+      display: block;
     }
   </style>
   <script>
@@ -478,8 +493,8 @@
   </script>
 </head>
 <body>
-  <header>
-    <img src="ketane.png" alt="Ketane Logo" class="logo">
+  <header><a href="ketane.xyz">
+    <img src="ketane.png" alt="Ketane Logo" class="logo"></a>
     <div class="ticker ketane-rainbow">$KETANE</div>
     <nav>
       <a href="#abstract">Abstract</a>
@@ -491,22 +506,22 @@
   </header>
   <main>
     <section id="abstract">
-      <h2 class="">Research Abstract</h2>
+      <h2 class="">Research Abstract:</h2>
       <div class="about">
         <b>Ketane</b> (<span class="ketane-rainbow">$KETANE</span>) is a novel, experimental fuel synthesized from the intersection of blockchain technology and advanced chemical meme-istry. This project explores the potential of ketamine-based compounds as a next-generation energy source for decentralized systems. Early results indicate high volatility, rapid adoption, and significant community-driven innovation. <br> <br>Further research is ongoing....
       </div>
     </section>
     <section id="about">
-      <h2>Background</h2>
+      <h2>Background:</h2>
       <div class="about">
         The <b>Ketane Research Initiative</b> was founded to investigate the properties and applications of ketamine-based fuels in digital economies. Drawing inspiration from Bitcoin puppet lore and the bitcoin blockchain, our team hypothesizes that <span class="ketane-rainbow">$KETANE</span> may serve as a high-octane catalyst for both technological and cultural transformation. This could lead to unprecendented and extremely lucritive growth in the Ordinals ecosystem. Our team has long hypothesized that this growth could in turn spark the start of an <i>ordinals bull market</i>. This site documents our findings and invites peer review from the broader scientific and crypto communities.
       </div>
     </section>
     <section id="tokenomics">
-      <h2>Experimental Data</h2>
+      <h2>Experimental Data:</h2>
       <div class="tokenomics">
         <div>
-          <b>Molecular Supply:</b><br> Unknown <span class="ketane-rainbow">$KETANE</span>
+          <b>Molecular Supply:</b><br> Unknown
         </div>
         <div>
           <b>Substrate:</b><br> Alkanes Chain
@@ -515,19 +530,24 @@
           <b>Stability Index:</b><br> 100% (no decay observed)
         </div>
         <div>
-          <b>Potential Applications:</b><br> Decentralized energy, potential bull catalyst, experimental memeonomics, puppet fuel, ???
+          <b>Potential Applications:</b>
+          <li>Decentralized energy,</li>
+           <li>Potential bull catalyst,</li>
+           <li>Experimental memeonomics,</li>
+           <li>Puppet fuel,</li>
+           <li>???</li>
         </div>
       </div>
     </section>
     <section id="howtomint">
-      <h2>How to Synthesize <span class="ketane-rainbow">$KETANE</span></h2>
+      <h2>How to Synthesize <span class="ketane-rainbow">$KETANE</span>:</h2>
       <div class="how-to-buy">
-        <ol>
-          <li><b>Select a synthesis platform:</b> <a href="https://www.idclub.io/">IDClub</a> (user-friendly) or <a href="https://runeblaster.io/">RuneBlaster</a> (cost-effective).</li>
-          <li><b>Prepare your digital wallet:</b> Compatible with Alkanes (e.g., <a href="https://www.oyl.io/">Oyl</a>,<a href="https://unisat.io/">Unisat</a>).</li>
-          <li><b>Input synthesis parameters:</b> Ticker, address, amount, and fees.</li>
-          <li><b>Initiate synthesis:</b> Confirm and pay the required fee.</li>
-          <li><b>Verify results:</b> Confirm successful synthesis of <span class="ketane-rainbow">$KETANE</span> in your wallet or via <a href="https://www.idclub.io/">IDclub</a>.</li>
+        <ol >
+          <li style="margin-bottom: 1em;"><b>Select a synthesis platform:</b> <a href="https://www.idclub.io/">IDClub</a> (user-friendly) or <a href="https://runeblaster.io/">RuneBlaster</a> (cost-effective).</li>
+          <li style="margin-bottom: 1em;"><b>Prepare your digital wallet:</b> Compatible with Alkanes (e.g., <a href="https://www.oyl.io/">Oyl</a>,<a href="https://unisat.io/">Unisat</a>).</li>
+          <li style="margin-bottom: 1em;"><b>Input synthesis parameters:</b> Ticker, address, amount, and fees.</li>
+          <li style="margin-bottom: 1em;"><b>Initiate synthesis:</b> Confirm and pay the required fee.</li>
+          <li style="margin-bottom: 1em;"><b>Verify results:</b> Confirm successful synthesis of <span class="ketane-rainbow">$KETANE</span> in your wallet or via <a href="https://www.idclub.io/">IDclub</a>.</li>
         </ol>
         <div style="font-size:0.95em; color:var(--text); margin-top:0.7em;">
           <b>Note:</b> All experiments are conducted at your own risk. The $KETANE protocol is highly experimental and subject to rapid change.
@@ -535,9 +555,9 @@
       </div>
     </section>
     <section id="team">
-      <h2>Research Team</h2>
-      <div class="about">
-        <b>Lead Scientist:</b> Dr. Satoshi Nakamoto, PhD<br>
+      <h2>Research Team:</h2>
+      <div class="about" >
+        <b >Lead Scientist:</b> Dr. Satoshi Nakamoto, PhD<br>
         <b>Blockchain Engineer:</b> @frubcoin<br>
         <b>Lab Technician:</b> Pepe the Frog<br>
         <b>Community Outreach:</b> Wojak<br>
