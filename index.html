@@ -40,7 +40,7 @@
       --text: #eaffd0;
       --text-accent: #3aff00;
       --border: #3aff00;
-      --shadow: #2ab400;
+      --shadow: #45683b;
       --nav-bg: #23282675;
       --nav-text: #eaffd0;
       --nav-hover-bg: #4d555175;
@@ -121,6 +121,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
       text-shadow: 2px 2px 0 #fff, 4px 4px 0 var(--shadow);
     }
     .ticker {
+      display: none;
       font-size: 1.1rem;
       color: #fff;
       background: var(--text-accent);
@@ -137,6 +138,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
       filter: brightness(1.2) drop-shadow(0 0 4px #fff7);
     }
     .ticker .copy-confirm {
+      display: none;
       position: absolute;
       left: 50%;
       top: 110%;
@@ -322,7 +324,7 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
           background-size: cover;
         }
         .logo {
-          max-width: 50vw;
+          max-width: 60vw;
           height: auto;
         }
         .tokenomics {
@@ -546,7 +548,6 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
 <body>
   <header><a href="/">
     <img src="ketane.png" alt="Ketane Logo" class="logo"></a>
-    <div class="ticker ketane-rainbow">$KETANE</div>
     <nav>
       <a href="#abstract">Abstract</a>
       <a href="#about">Background</a>
